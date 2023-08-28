@@ -1,43 +1,74 @@
-# XYZ GOAT React.js Code Challenge
+# TODO List React
 
-**TODO List React** is a code challenge for frontend developer.
+**TODO List React** is a simple TODO List app build using React.
 
-![TODO List App](https://user-images.githubusercontent.com/2387508/141241010-f29cb52e-adcf-4ac3-a220-ad59f7661d54.png)
+![TODO List App](https://github.com/surdarmaputra/react-todo/assets/8598274/452e21bb-65d6-4105-969c-79b9bf696607)
 
-## Mission
+Functionalities:
 
-**Here are the tasks you must complete:**
+- Fetch tasks
+- Add a new task
+- Delete a task
 
-- Complete the TODO List application in accordance with the design (image above)
-  - Fetch tasks
-  - Add a new task
-  - Delete a task
-- **MUST** use [JSON Server](https://github.com/typicode/json-server) (db.json) as API server when fetching tasks, adding a new task and deleting a task
-- Implement custom hooks in order to manage tasks
-- Add more than **3 unit tests** (custom hooks and components) with [jest](https://jestjs.io/docs/getting-started)
-- Refactor the code to be more readable
-- Add source code comments to be more readable
+## Getting Started
 
-## Rules
+### Requirements
 
-**NOT ALLOWED**
+- Node.js v16
+- Yarn
 
-- Remove existing source code
-- Change the API server and `db.json`
-- Use another languages like TypeScript (**MUST** use JavaScript)
+**Note**:
 
-**ALLOWED**
+Make sure not to use Node.js version 17 and above, otherwise you will see `ERR_PACKAGE_PATH_NOT_EXPORTED` error which blocks the build process.
 
-- Change the design to have better UI and UX
-- Modify existing source code
-- Create new modules/methods/components/hooks
-- Add **new packages**
+### Installation
 
-## Commands
+Clone the repo
+
+```bash
+# using SSH
+git clone git@github.com:surdarmaputra/react-todo.git
+
+# using HTTPS
+git clone https://github.com/surdarmaputra/react-todo.git
+
+```
+
+Prepare environment variables
+
+```bash
+cp .env.example .env
+
+```
+
+Install dependencies
+
+```bash
+cd react-todo
+
+# if using asdf (https://asdf-vm.com/), prepare the correct Node.js version
+asdf install
+asdf local nodejs 16.20.2
+
+# install dependencies
+yarn
+```
+
+Start development server
+
+```bash
+# start the JSON server
+yarn server
+
+# start the web app
+yarn start
+```
+
+### Commands
 
 In the project directory, you can run:
 
-### `yarn start`
+#### `yarn start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -45,12 +76,16 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-### `yarn test`
+#### `yarn test`
 
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+#### `yarn testcov`
+
+Launches the test runner and generate coverage report without interactive watch mode.
+
+#### `yarn build`
 
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
@@ -60,20 +95,6 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `yarn server`
+#### `yarn server`
 
 Run the API server with JSON Server.
-
-## Hiring Criteria
-We will evaluate your skills based on criteria as below.
-- Complete all functionalities
-- Test coverage should be greater than 70%
-- Mocking network requests
-- Follow component oriented programming
-- Add source code comments to be more readable
-- Good naming convention (filenames, functions and variables)
-- Design testable functions
-- implement custom hooks
-- High maintenance source code
-- Error handling
-
