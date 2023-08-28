@@ -98,3 +98,9 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 #### `yarn server`
 
 Run the API server with JSON Server.
+
+### Environment Variables
+
+#### `REACT_APP_BACKEND_BASE_URL`
+
+Base URL of backend endpoint (JSON server). By default, `yarn server` will start backend service at `http://localhost:3001`. Change its value according to your backend service URL.
