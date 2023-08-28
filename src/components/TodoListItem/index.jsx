@@ -1,18 +1,33 @@
 import identity from 'lodash/identity'
 import PropTypes from 'prop-types'
 
+import useDeleteTodo from '../../hooks/useDeleteTodo'
 import Button from '../Button'
 
-export default function TodoListItem({ onDelete = identity, title }) {
+export default function TodoListItem({ onDeleteSuccess = identity, todo }) {
+  const { id, title } = todo
+  const { deleteTodo, deleteTodoLoading } = useDeleteTodo({
+    onSuccess: onDeleteSuccess,
+  })
+
+  const handleDelete = () => {
+    deleteTodo(id)
+  }
+
   return (
     <div>
       <div>{title}</div>
-      <Button onClick={onDelete}>Delete</Button>
+      <Button onClick={handleDelete} disabled={deleteTodoLoading}>
+        {deleteTodoLoading ? 'Deleting...' : 'Delete'}
+      </Button>
     </div>
   )
 }
 
 TodoListItem.propTypes = {
-  onDelete: PropTypes.func,
-  title: PropTypes.string.isRequired,
+  todo: PropTypes.shape({
+    id: PropTypes.number,
+    title: PropTypes.string.isRequired,
+  }),
+  onDeleteSuccess: PropTypes.func,
 }
