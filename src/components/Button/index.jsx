@@ -1,8 +1,16 @@
 import identity from 'lodash/identity'
 import PropTypes from 'prop-types'
 
-export default function Button({ children, onClick = identity }) {
-  return <button onClick={onClick}>{children}</button>
+export default function Button({
+  children,
+  onClick = identity,
+  ...buttonNativeProps
+}) {
+  return (
+    <button onClick={onClick} {...buttonNativeProps}>
+      {children}
+    </button>
+  )
 }
 
 Button.propTypes = {
