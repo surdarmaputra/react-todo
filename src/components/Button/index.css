@@ -22,3 +22,12 @@
 .button--secondary:hover {
   background: #cbd5e1;
 }
+
+.button--danger {
+  background: #ef4444;
+  color: #ffffff;
+}
+
+.button--danger:hover {
+  background: #dc2626;
+}

@@ -14,6 +14,7 @@ export default function Button({
   const variantClassName = {
     primary: '',
     secondary: 'button--secondary',
+    danger: 'button--danger',
   }[variant]
 
   return (
@@ -34,5 +35,5 @@ Button.propTypes = {
   isLoading: PropTypes.bool,
   loadingPlaceholder: PropTypes.node,
   onClick: PropTypes.func,
-  variant: PropTypes.oneOf(['primary', 'secondary']),
+  variant: PropTypes.oneOf(['primary', 'secondary', 'danger']),
 }

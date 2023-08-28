@@ -7,5 +7,12 @@ export default async function handleSWRCreate(url, { arg }) {
     body: JSON.stringify(arg),
   })
 
+  if (!response.ok) {
+    const error = new Error('An error occurred while creating the data.')
+    error.response = await response.json()
+    error.status = response.status
+    throw error
+  }
+
   return response.json()
 }

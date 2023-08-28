@@ -1,0 +1,11 @@
+.error-placeholder {
+  background: #fee2e2;
+  color: #dc2626;
+  width: 100%;
+  padding: 0.75rem 0.5rem;
+  border-radius: 0.45rem;
+}
+
+.error-placeholder__action {
+  margin-top: 1rem;
+}

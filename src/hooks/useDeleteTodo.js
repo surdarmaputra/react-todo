@@ -5,11 +5,12 @@ import generateBackendURL from '../utils/generateBackendURL'
 import handleSWRDelete from '../utils/handleSWRDelete'
 
 export default function useDeleteTodo({ onSuccess = identity }) {
-  const { trigger, isMutating } = useSWRMutation(
+  const { trigger, isMutating, error } = useSWRMutation(
     generateBackendURL('/tasks'),
     handleSWRDelete,
     {
       onSuccess,
+      throwOnError: false,
     },
   )
 
@@ -18,5 +19,6 @@ export default function useDeleteTodo({ onSuccess = identity }) {
   return {
     deleteTodo,
     deleteTodoLoading: isMutating,
+    deleteTodoError: error,
   }
 }

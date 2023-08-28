@@ -12,8 +12,13 @@ const handlers = [
       }),
     )
   }),
+
   rest.get('http://localhost:3001/tasks', (req, res, ctx) => {
     return res(ctx.status(200), ctx.json(tasksResponse))
+  }),
+
+  rest.delete('http://localhost:3001/tasks/1', (req, res, ctx) => {
+    return res(ctx.status(200), ctx.json({}))
   }),
 ]
 

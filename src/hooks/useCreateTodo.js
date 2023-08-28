@@ -10,6 +10,7 @@ export default function useCreateTodo({ onSuccess = identity }) {
     handleSWRCreate,
     {
       onSuccess,
+      throwOnError: false,
     },
   )
 
