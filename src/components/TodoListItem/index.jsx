@@ -16,7 +16,7 @@ export default function TodoListItem({ onDeleteSuccess = identity, todo }) {
   }
 
   return (
-    <div className="todo-list-item">
+    <div className="todo-list-item" data-testid="todo-list-item">
       <div className="todo-list-item__title">{title}</div>
       <Button
         onClick={handleDelete}

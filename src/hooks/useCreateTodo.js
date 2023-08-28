@@ -5,7 +5,7 @@ import generateBackendURL from '../utils/generateBackendURL'
 import handleSWRCreate from '../utils/handleSWRCreate'
 
 export default function useCreateTodo({ onSuccess = identity }) {
-  const { trigger, isMutating } = useSWRMutation(
+  const { trigger, isMutating, error } = useSWRMutation(
     generateBackendURL('/tasks'),
     handleSWRCreate,
     {
@@ -16,5 +16,6 @@ export default function useCreateTodo({ onSuccess = identity }) {
   return {
     createTodo: trigger,
     createTodoLoading: isMutating,
+    createTodoError: error,
   }
 }
