@@ -17,7 +17,7 @@ describe('Button', () => {
     await screen.findByRole('button', { name: /Submit/ })
   })
 
-  test('trigger onClick render', async () => {
+  test('trigger onClick', async () => {
     const handleClick = jest.fn()
     setup({
       onClick: handleClick,

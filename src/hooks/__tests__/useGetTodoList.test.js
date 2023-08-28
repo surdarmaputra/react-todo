@@ -29,6 +29,7 @@ describe('useGetTodoList', () => {
   })
 
   test('return error', async () => {
+    // simulate backend error
     const errorResponseSample = {
       message: 'any error message',
     }
@@ -38,9 +39,11 @@ describe('useGetTodoList', () => {
       }),
     )
 
+    // return no error in initial render
     const { result } = renderAppHook(() => useGetTodoList())
     expect(result.current.todoListError).toBe(undefined)
 
+    // return error after loading finished
     await waitFor(() => expect(result.current.todoListLoading).toBe(false))
     expect(result.current.todoListError).toMatchObject({
       response: errorResponseSample,
@@ -50,6 +53,8 @@ describe('useGetTodoList', () => {
 
   test('trigger refetch', async () => {
     const { result } = renderAppHook(() => useGetTodoList())
+
+    // wait for initial request finished
     expect(result.current).toMatchObject({
       todoList: undefined,
       todoListError: undefined,
@@ -57,13 +62,14 @@ describe('useGetTodoList', () => {
       todoListRefetching: true,
       refetchTodoList: expect.any(Function),
     })
-
     await waitFor(() => expect(result.current.todoListLoading).toBe(false))
     await waitFor(() => expect(result.current.todoListRefetching).toBe(false))
+    expect(result.current.todoList).toEqual(tasksResponse)
+
+    // refetch and get the same data
     act(() => {
       result.current.refetchTodoList()
     })
-
     await waitFor(() => expect(result.current.todoListRefetching).toBe(true))
     await waitFor(() => expect(result.current.todoListRefetching).toBe(false))
     expect(result.current.todoList).toEqual(tasksResponse)

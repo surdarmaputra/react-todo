@@ -32,6 +32,7 @@ describe('useDeleteTodo', () => {
   })
 
   test('return error after triggering deleteTodo function', async () => {
+    // simulate backend error
     const errorResponseSample = {
       message: 'any error message',
     }
@@ -41,6 +42,7 @@ describe('useDeleteTodo', () => {
       }),
     )
 
+    // return no error in initial render
     const handleSuccess = jest.fn()
     const { result } = renderAppHook(() =>
       useDeleteTodo({ onSuccess: handleSuccess }),
@@ -51,9 +53,9 @@ describe('useDeleteTodo', () => {
       result.current.deleteTodo(1)
     })
 
+    // return error after loading finished
     await waitFor(() => expect(result.current.deleteTodoLoading).toBe(true))
     await waitFor(() => expect(result.current.deleteTodoLoading).toBe(false))
-
     expect(result.current.deleteTodoError).toMatchObject({
       response: errorResponseSample,
       status: 500,

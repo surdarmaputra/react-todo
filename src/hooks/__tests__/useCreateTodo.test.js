@@ -35,6 +35,7 @@ describe('useCreateTodo', () => {
   })
 
   test('return error after triggering createTodo function', async () => {
+    // simulate backend error
     const errorResponseSample = {
       message: 'any error message',
     }
@@ -44,6 +45,7 @@ describe('useCreateTodo', () => {
       }),
     )
 
+    // return no error in initial render
     const handleSuccess = jest.fn()
     const { result } = renderAppHook(() =>
       useCreateTodo({ onSuccess: handleSuccess }),
@@ -56,9 +58,9 @@ describe('useCreateTodo', () => {
       })
     })
 
+    // return error after loading finished
     await waitFor(() => expect(result.current.createTodoLoading).toBe(true))
     await waitFor(() => expect(result.current.createTodoLoading).toBe(false))
-
     expect(result.current.createTodoError).toMatchObject({
       response: errorResponseSample,
       status: 500,
