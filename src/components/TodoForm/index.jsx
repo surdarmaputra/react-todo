@@ -1,6 +1,6 @@
 import './index.css'
 
-import { useState } from 'react'
+import { useForm } from 'react-hook-form'
 
 import identity from 'lodash/identity'
 import PropTypes from 'prop-types'
@@ -8,31 +8,40 @@ import PropTypes from 'prop-types'
 import useCreateTodo from '../../hooks/useCreateTodo'
 import Button from '../Button'
 import ErrorPlaceholder from '../ErrorPlaceholder'
-import Input from '../Input'
 
 export default function TodoForm({ onSuccess = identity }) {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm()
+
+  const handleSuccess = () => {
+    reset()
+    onSuccess()
+  }
+
   const { createTodo, createTodoLoading, createTodoError } = useCreateTodo({
-    onSuccess,
+    onSuccess: handleSuccess,
   })
-  const [title, setTitle] = useState('')
 
   const hasError = !createTodoLoading && Boolean(createTodoError)
 
-  const handleSubmit = (event) => {
-    event.preventDefault()
+  const submit = (formData) => {
     createTodo({
-      title,
+      title: formData?.title,
     })
   }
 
   return (
     <>
-      <form className="todo-form">
-        <Input
+      <form className="todo-form" onSubmit={handleSubmit(submit)}>
+        <input
+          type="text"
           className="todo-form__input"
-          value={title}
-          onChange={(event) => setTitle(event?.target?.value)}
           placeholder="Type any task"
+          {...register('title', { required: true })}
         />
         <Button
           type="submit"
@@ -44,6 +53,9 @@ export default function TodoForm({ onSuccess = identity }) {
           Add
         </Button>
       </form>
+      {errors?.title && (
+        <div className="todo-form__input-error">Please input task title</div>
+      )}
       {hasError && <ErrorPlaceholder isRetryButtonVisible={false} />}
     </>
   )

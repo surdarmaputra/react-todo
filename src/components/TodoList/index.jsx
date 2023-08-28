@@ -9,8 +9,13 @@ import TodoListItem from '../TodoListItem'
  * TODO List
  */
 export default function TodoList() {
-  const { todoList, todoListError, todoListLoading, refetchTodoList } =
-    useGetTodoList()
+  const {
+    todoList,
+    todoListError,
+    todoListLoading,
+    todoListRefetching,
+    refetchTodoList,
+  } = useGetTodoList()
 
   const hasError = !todoListLoading && Boolean(todoListError)
   const hasItems = !todoListLoading && !hasError && todoList?.length
@@ -26,6 +31,7 @@ export default function TodoList() {
           {todoList.map((todo) => (
             <TodoListItem todo={todo} key={todo.id} />
           ))}
+          {todoListRefetching && <li>Loading...</li>}
         </ul>
       )}
     </div>

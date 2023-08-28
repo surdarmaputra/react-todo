@@ -56,6 +56,29 @@ describe('TodoList', () => {
     await screen.findByRole('button', { name: /Add/ })
   })
 
+  test('validate input before creating todo', async () => {
+    setup()
+    await screen.findAllByTestId('todo-list-item')
+
+    const input = await screen.findByPlaceholderText(/Type any task/)
+    const addButton = await screen.findByRole('button', { name: /Add/ })
+
+    userEvent.click(addButton)
+
+    await screen.findByText(/Please input task title/)
+    userEvent.type(input, 'any task')
+    await waitFor(() =>
+      expect(
+        screen.queryByText(/Please input task title/),
+      ).not.toBeInTheDocument(),
+    )
+
+    userEvent.click(addButton)
+
+    await screen.findByRole('button', { name: /Submitting.../ })
+    await screen.findByRole('button', { name: /Add/ })
+  })
+
   test('handle retry when create todo has error', async () => {
     const errorResponseSample = {
       message: 'any error message',

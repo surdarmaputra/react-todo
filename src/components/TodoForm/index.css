@@ -17,6 +17,11 @@
   outline: none;
 }
 
+.todo-form__input-error {
+  text-align: left;
+  color: #dc2626;
+}
+
 .todo-form__action {
   flex-grow: 1;
 }

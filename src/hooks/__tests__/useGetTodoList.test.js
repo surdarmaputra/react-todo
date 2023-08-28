@@ -14,6 +14,7 @@ describe('useGetTodoList', () => {
       todoList: undefined,
       todoListError: undefined,
       todoListLoading: true,
+      todoListRefetching: true,
       refetchTodoList: expect.any(Function),
     })
 
@@ -22,6 +23,7 @@ describe('useGetTodoList', () => {
       todoList: tasksResponse,
       todoListError: undefined,
       todoListLoading: false,
+      todoListRefetching: false,
       refetchTodoList: expect.any(Function),
     })
   })
@@ -52,16 +54,18 @@ describe('useGetTodoList', () => {
       todoList: undefined,
       todoListError: undefined,
       todoListLoading: true,
+      todoListRefetching: true,
       refetchTodoList: expect.any(Function),
     })
 
     await waitFor(() => expect(result.current.todoListLoading).toBe(false))
+    await waitFor(() => expect(result.current.todoListRefetching).toBe(false))
     act(() => {
       result.current.refetchTodoList()
     })
 
-    await waitFor(() => expect(result.current.todoListLoading).toBe(true))
-    await waitFor(() => expect(result.current.todoListLoading).toBe(false))
+    await waitFor(() => expect(result.current.todoListRefetching).toBe(true))
+    await waitFor(() => expect(result.current.todoListRefetching).toBe(false))
     expect(result.current.todoList).toEqual(tasksResponse)
   })
 })

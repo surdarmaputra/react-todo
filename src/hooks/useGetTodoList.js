@@ -17,7 +17,8 @@ export default function useGetTodoList() {
   return {
     todoList: data,
     todoListError: error,
-    todoListLoading: isLoading || isValidating,
+    todoListLoading: isLoading,
+    todoListRefetching: isValidating,
     refetchTodoList,
   }
 }
