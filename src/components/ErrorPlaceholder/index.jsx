@@ -4,6 +4,15 @@ import identity from 'lodash/identity'
 import PropTypes from 'prop-types'
 
 import Button from '../Button'
+
+/**
+ * Renders an error placeholder UI with an optional retry button.
+ *
+ * @param {Object} props - The component props.
+ * @param {boolean} [props.isRetryButtonVisible=true] - Determines whether the retry button should be visible.
+ * @param {function} [props.onRetry] - The callback function to be executed when the retry button is clicked.
+ * @returns {JSX.Element} - The JSX element representing the error placeholder UI.
+ */
 export default function ErrorPlaceholder({
   isRetryButtonVisible = true,
   onRetry = identity,

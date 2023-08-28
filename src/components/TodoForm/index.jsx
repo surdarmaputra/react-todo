@@ -9,6 +9,13 @@ import useCreateTodo from '../../hooks/useCreateTodo'
 import Button from '../Button'
 import ErrorPlaceholder from '../ErrorPlaceholder'
 
+/**
+ * Renders a form to create new todo.
+ *
+ * @param {Object} props - The component props.
+ * @param {function} [props.onSuccess] - The callback function to be executed when successfully submit todo to backend.
+ * @returns {JSX.Element} - The JSX element representing the form.
+ */
 export default function TodoForm({ onSuccess = identity }) {
   const {
     register,

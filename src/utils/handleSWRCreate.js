@@ -1,3 +1,14 @@
+/**
+ * Handles a POST request to create data using the SWR pattern.
+ *
+ * @async
+ * @param {string} url - The URL where the data should be created.
+ * @param {object} options - The options for the creation request.
+ * @param {object} options.arg - The data to be created.
+ * @returns {Promise<object>} - A promise resolving to the created data.
+ *
+ * @throws {Error} - Throws an error if the creation request fails.
+ */
 export default async function handleSWRCreate(url, { arg }) {
   const response = await fetch(url, {
     method: 'POST',

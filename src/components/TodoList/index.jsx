@@ -6,7 +6,9 @@ import TodoForm from '../TodoForm'
 import TodoListItem from '../TodoListItem'
 
 /**
- * TODO List
+ * Renders all functionalities of a todo list.
+ *
+ * @returns {JSX.Element} - The JSX element representing the todo list.
  */
 export default function TodoList() {
   const {
