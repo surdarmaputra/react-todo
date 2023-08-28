@@ -10,7 +10,7 @@ import Button from '../Button'
 import Input from '../Input'
 
 export default function TodoForm({ onSuccess = identity }) {
-  const { createTodo } = useCreateTodo({ onSuccess })
+  const { createTodo, createTodoLoading } = useCreateTodo({ onSuccess })
   const [title, setTitle] = useState('')
 
   const handleSubmit = (event) => {
@@ -32,6 +32,8 @@ export default function TodoForm({ onSuccess = identity }) {
         type="submit"
         onClick={handleSubmit}
         className="todo-form__action"
+        loadingPlaceholder="Submitting..."
+        isLoading={createTodoLoading}
       >
         Add
       </Button>

@@ -22,8 +22,10 @@ export default function TodoListItem({ onDeleteSuccess = identity, todo }) {
         onClick={handleDelete}
         disabled={deleteTodoLoading}
         variant="secondary"
+        isLoading={deleteTodoLoading}
+        loadingPlaceholder="Deleting..."
       >
-        {deleteTodoLoading ? 'Deleting...' : 'Delete'}
+        Delete
       </Button>
     </div>
   )

@@ -41,4 +41,15 @@ describe('Button', () => {
     })
     await screen.findByText('Submitting...')
   })
+
+  test('disable click when loading', async () => {
+    const handleClick = jest.fn()
+    setup({
+      isLoading: true,
+      onClick: handleClick,
+    })
+
+    userEvent.click(await screen.findByRole('button'))
+    expect(handleClick).not.toHaveBeenCalled()
+  })
 })
