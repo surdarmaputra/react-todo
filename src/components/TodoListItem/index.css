@@ -1,0 +1,15 @@
+.todo-list-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 0.45rem;
+  background: #f1f5f9;
+}
+
+.todo-list-item__title {
+  color: #0f172a;
+}

@@ -1,9 +1,10 @@
+import './index.css'
+
 import identity from 'lodash/identity'
 import PropTypes from 'prop-types'
 
 import useDeleteTodo from '../../hooks/useDeleteTodo'
 import Button from '../Button'
-
 export default function TodoListItem({ onDeleteSuccess = identity, todo }) {
   const { id, title } = todo
   const { deleteTodo, deleteTodoLoading } = useDeleteTodo({
@@ -15,9 +16,13 @@ export default function TodoListItem({ onDeleteSuccess = identity, todo }) {
   }
 
   return (
-    <div>
-      <div>{title}</div>
-      <Button onClick={handleDelete} disabled={deleteTodoLoading}>
+    <div className="todo-list-item">
+      <div className="todo-list-item__title">{title}</div>
+      <Button
+        onClick={handleDelete}
+        disabled={deleteTodoLoading}
+        variant="secondary"
+      >
         {deleteTodoLoading ? 'Deleting...' : 'Delete'}
       </Button>
     </div>
