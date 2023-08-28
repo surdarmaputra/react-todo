@@ -20,7 +20,7 @@ export default function TodoList() {
   } = useGetTodoList()
 
   const hasError = !todoListLoading && Boolean(todoListError)
-  const hasItems = !todoListLoading && !hasError && todoList?.length
+  const hasItems = !todoListLoading && !hasError && Boolean(todoList?.length)
 
   return (
     <div className="todolist">
@@ -28,12 +28,16 @@ export default function TodoList() {
       <TodoForm onSuccess={refetchTodoList} />
       {todoListLoading && 'Loading...'}
       {hasError && <ErrorPlaceholder onRetry={refetchTodoList} />}
-      {hasItems && (
+      {hasItems ? (
         <ul className="todolist__items">
           {todoList.map((todo) => (
             <TodoListItem todo={todo} key={todo.id} />
           ))}
           {todoListRefetching && <li>Loading...</li>}
+        </ul>
+      ) : (
+        <ul className="todolist__items">
+          <li>No item</li>
         </ul>
       )}
     </div>

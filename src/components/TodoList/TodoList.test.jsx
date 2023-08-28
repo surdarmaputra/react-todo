@@ -23,6 +23,23 @@ describe('TodoList', () => {
     within(todos[2]).getByText(tasksResponse[2].title)
   })
 
+  test('show empty list', async () => {
+    // simulate empty backend response
+    server.use(
+      rest.get('http://localhost:3001/tasks', (req, res, ctx) => {
+        return res.once(ctx.status(200), ctx.json([]))
+      }),
+    )
+    setup()
+
+    await screen.findByText(/Loading.../)
+    await waitFor(() =>
+      expect(screen.queryByText(/Loading.../)).not.toBeInTheDocument(),
+    )
+    await screen.findByText(/No item/)
+    expect(screen.queryByTestId('todo-list-item')).not.toBeInTheDocument()
+  })
+
   test('handle retry if show list of todo has error', async () => {
     // simulate backend error
     server.use(
