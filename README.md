@@ -2,7 +2,7 @@
 
 **TODO List React** is a simple TODO List app build using React.
 
-![TODO List App](https://github.com/surdarmaputra/react-todo/assets/8598274/58245e36-4234-4d37-b1a6-a22afae73bae)
+[TODO List App](https://github.com/surdarmaputra/react-todo/assets/8598274/58245e36-4234-4d37-b1a6-a22afae73bae)
 
 Functionalities:
 
