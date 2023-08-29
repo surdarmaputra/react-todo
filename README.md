@@ -2,7 +2,7 @@
 
 **TODO List React** is a simple TODO List app build using React.
 
-![TODO List App](https://github.com/surdarmaputra/react-todo/assets/8598274/23277f8c-c760-4a36-8e36-26d216008b80)
+![TODO List App](https://github.com/surdarmaputra/react-todo/assets/8598274/58245e36-4234-4d37-b1a6-a22afae73bae)
 
 Functionalities:
 
@@ -32,6 +32,9 @@ git clone git@github.com:surdarmaputra/react-todo.git
 # using HTTPS
 git clone https://github.com/surdarmaputra/react-todo.git
 
+# go to project directory
+cd react-todo
+
 ```
 
 Prepare environment variables
@@ -44,8 +47,6 @@ cp .env.example .env
 Install dependencies
 
 ```bash
-cd react-todo
-
 # if using asdf (https://asdf-vm.com/), prepare the correct Node.js version
 asdf install
 asdf local nodejs 16.20.2
@@ -104,3 +105,13 @@ Run the API server with JSON Server.
 #### `REACT_APP_BACKEND_BASE_URL`
 
 Base URL of backend endpoint (JSON server). By default, `yarn server` will start backend service at `http://localhost:3001`. Change its value according to your backend service URL.
+
+## Tech Stacks
+
+- [React](https://react.dev/) bootstrapped using [Create React App](https://create-react-app.dev/).
+- [SWR](https://swr.vercel.app/) for data fetching.
+- [React Hook Form](https://react-hook-form.com/) for input validation.
+- [Lodash](https://lodash.com/) for utilities.
+- [ESLint](https://eslint.org/) & [Prettier](https://prettier.io/) for code standardization.
+- [JSON Server](https://github.com/typicode/json-server) for faking REST API.
+- [Testing Library](https://testing-library.com/) & [MSW](https://mswjs.io/) for testing.
